@@ -1,30 +1,37 @@
 #!/usr/bin/env node
 //importamos fs y path
-const fs = require('fs');
-const path = require ("path");
-/*function MdLink (ruta) {
-  console.log("hola", ruta);
-}
-MdLink("./readme.md");*/
+const fs = require("fs");
+const path = require("path");
+const { readFileSync } = require("node:fs");
+const { argv } = require('node:process');
 
-//comprabando si las rutas existen 
-let inputPath = process.argv [2]
-console.log({inputPath});
-const pathfixed = path.posix.basename(inputPath);
-console.log({pathfixed});
-const routeExist = pathfixed => fs.existsSync(pathfixed);
-console.log(routeExist(pathfixed))
 
-//comprobamos si es archivo md
+function MdLink (ruta) {
+  //console.log("hola", ruta);
+
+//comprabando si las rutas existen
+const routeExist = () => fs.existsSync(ruta);
+console.log(routeExist());
+
+//comprobamos si es archivo 
 const routeType = (source) => {
-  if(source.isFile() === true) {
-      return true
-  } return false
-}
-const routeIsAFile = fs.statSync(pathfixed);
-console.log(routeType(routeIsAFile))
+  if (source.isFile() === true) {
+    return true;
+  }
+  return false;
+};
+//leer archivos de tu ruta principal
+const routeFiles = fs.statSync(ruta);
+console.log('es archivo? ' + routeType(routeFiles));
 //console.log(routeIsAFile);
+//HASTA AQUI OK
 
-//la ruta es relativa
-const file = fs.readFileSync(pathfixed,  {encoding:'utf8', flag:'r'} );
-console.log(file);
+//lee los archivos de la ruta relativa
+const dir = fs.readdirSync(ruta, { encoding: "utf8", flag: "r" });
+
+console.log('estos son los archivos del directorios' + dir);
+
+
+//lee directorios
+}
+MdLink("./");
