@@ -4,8 +4,11 @@
   "engines": {
     "node": ">=16.x"
   },
-  "main": "./index.js", 
+  "main": "./index.js",
   "bin": {
     "mdlinks": "./index.js"
+  },
+  "dependencies": {
+    "parse-md": "^2.0.0"
   }
 }

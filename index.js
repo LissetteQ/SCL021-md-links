@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const { readFileSync } = require("node:fs");
 const { argv } = require("node:process");
+const parseMD = require('parse-md').default
+
 function MdLink(ruta) {
   //console.log("hola", ruta);
 
@@ -50,7 +52,18 @@ function MdLink(ruta) {
   console.log(rute(dir));
 
   //Existen los links ?
-  
+const fileContents = fs.readFileSync('README.md', 'utf8')
+const { metadata, content } = parseMD(fileContents)
+console.log(metadata);
+console.log(content);
+
+//se leen los links
+const Url = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/gim;
+function FindLinks (content) {
+  console.log(content.match(Url));
+}
+FindLinks(fileContents);
+
 }
 
 MdLink("./");
