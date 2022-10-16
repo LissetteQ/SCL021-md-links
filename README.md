@@ -3,7 +3,7 @@
 ## Índice
 
 * 1. Descripción
-* 2. Diagrama de flujo
+* 2. ~~The world is flat.~~
 * 3. Instalación
 * 4. Ejemplos de uso
 
