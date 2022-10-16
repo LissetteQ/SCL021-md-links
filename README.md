@@ -2,7 +2,7 @@
 
 ## Índice
 
-*1- [Descripción](#1-#Descripción)
+H~2~O1- [Descripción](#1-#Descripción)
 *2- [Diagrama de Flujo](#2-#Diagrama-de-flujo)
 *3- [Instalación](#3-#Instalación)
 *4- [Ejemplos de uso](#4-#Ejemplos-de-uso)
