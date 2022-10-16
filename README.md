@@ -19,7 +19,7 @@ MDScan es una librería creada en NodeJs con la función de leer un archivo mark
 
  Para instalar la librería: 
 
-- **npm i parse-md 
+- **npm i parse-md** 
 
 ## 4. Ejemplos de uso
 
