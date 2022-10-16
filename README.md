@@ -2,10 +2,10 @@
 
 ## Índice
 
-* [1. Descripción](#1-Descripción)
-* [2. Diagrama de flujo] (#2- Diagramadeflujo)
-* [3. Instalación](#3-Instalación)
-* [4. Ejemplos de uso](#4-Ejemplos de uso)
+* 1. Descripción
+* 2. Diagrama de flujo
+* 3. Instalación
+* 4. Ejemplos de uso
 
 
 ## 1. Descripción
@@ -17,9 +17,9 @@ MDScan es una librería creada en NodeJs con la función de leer un archivo mark
 
 ## 3. Instalación
 
--  **Para instalar la librería: **
+-  Para instalar la librería: 
 
-- **npm i parse-md **
+- **npm i parse-md 
 
 ## 4. Ejemplos de uso
 
