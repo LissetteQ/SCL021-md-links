@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 //importamos fs y path
-const fs = require("fs");
-const path = require("path");
+const fs = require("fs"); //es el módulo nativo de Node. js que permite interactuar con los archivos del sistema.
+const path = require("path"); //path nos permite poder manejar las rutas tanto relativas como absolutas de nuestra PC y de nuestro proyecto.
 const { readFileSync } = require("node:fs");
 const { argv } = require("node:process");
 const parseMD = require("parse-md").default;
@@ -24,7 +24,7 @@ function MdLink(ruta) {
   };
   //leer archivos de tu ruta principal
   const routeFiles = fs.statSync(ruta);
-  //console.log("es archivo? " + routeType(routeFiles));
+  console.log("es archivo? " + routeType(routeFiles));
   //console.log(routeIsAFile);
   //HASTA AQUI OK
 
@@ -76,20 +76,17 @@ function MdLink(ruta) {
   //promesa y contador de links
   const counter = [];
   console.log(arrUrl);
-  arrUrl.forEach((url) => {
-    fetch(url)
-      .then((respuestaExitosa) => {
-        console.log({ url, estado: respuestaExitosa.status });
-        if (respuestaExitosa.status === 200) {
-          counter.push("estoy vivo amikaa");
-          console.log("Links validos:", counter.length);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const arrfetch = arrUrl.map((url, index) => {
+    return  fetch(url)
+    
   });
-  //console.log(counter.length);
-}
+  console.log(arrfetch);
+  Promise.allSettled(arrfetch).then((result)=>{
+//console.log(result)
+result.forEach((res)=>{
+console.log(res.value);
+})
+  }) 
 
+}
 MdLink("./");
