@@ -1,4 +1,4 @@
-const zmdLinks = require('../');
+const mdLinks = require('../');
 
 
 describe('mdLinks', () => {

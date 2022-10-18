@@ -2,11 +2,8 @@
 //importamos fs y path
 const fs = require("fs"); //es el módulo nativo de Node. js que permite interactuar con los archivos del sistema.
 const path = require("path"); //path nos permite poder manejar las rutas tanto relativas como absolutas de nuestra PC y de nuestro proyecto.
-const { readFileSync } = require("node:fs");
-const { argv } = require("node:process");
 const parseMD = require("parse-md").default;
 const fetch = require("node-fetch");
-const { url } = require("inspector");
 
 function MdLink(ruta) {
   //console.log("hola", ruta);
@@ -87,7 +84,9 @@ function MdLink(ruta) {
    .then((result)=>{
    result.forEach((res)=>{
      if(res.status === "fulfilled"){
-       console.log("Exito ", res.value?.status, res.value?.url);
+      if(res.value.status === 200 ) {
+        console.log("Exito ", res.value?.status, res.value?.url);
+      }else {console.log("Error ", res.value?.status, res.value?.url);}
        exitos.push({status: res.value?.status, url : res.value?.url});
      } else {
        console.log("Error", res.reason);
