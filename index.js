@@ -54,7 +54,8 @@ function MdLink(ruta) {
   //console.log(rute(dir));
 
   //Existen los links ?
-  const fileContents = fs.readFileSync("README.md", "utf8");
+  const fileContents = fs.readFileSync(process.argv[2]
+    , "utf8");
   const { metadata, content } = parseMD(fileContents);
   //console.log(metadata);
   //console.log(content);
@@ -73,20 +74,37 @@ function MdLink(ruta) {
   });
 
   //console.log(transformed)
-  //promesa y contador de links
-  const counter = [];
-  console.log(arrUrl);
-  const arrfetch = arrUrl.map((url, index) => {
-    return  fetch(url)
-    
-  });
-  console.log(arrfetch);
-  Promise.allSettled(arrfetch).then((result)=>{
-//console.log(result)
-result.forEach((res)=>{
-console.log(res.value);
-})
-  }) 
-
+ //promesa y contador de links
+ const exitos = [];
+ const errores = [];
+ let validos;
+ let broken;
+ console.log(arrUrl);
+ const arrfetch = arrUrl.map((url) => {
+   return fetch(url)
+ });
+ Promise.allSettled(arrfetch)
+   .then((result)=>{
+   result.forEach((res)=>{
+     if(res.status === "fulfilled"){
+       console.log("Exito ", res.value?.status, res.value?.url);
+       exitos.push({status: res.value?.status, url : res.value?.url});
+     } else {
+       console.log("Error", res.reason);
+       errores.push({error: res.reason})
+      }
+      validos = exitos.filter (url => url.status === 200)
+      //console.log(validos.length);
+      broken = exitos.filter (url => url.status !== 200)
+      //console.log(broken);
+   });
+ }).finally(() => {
+   console.log("-------------------------------------------")
+   console.log("| total exito : ", validos.length, " | ","total errores: ", broken.length, " | ")
+   console.log("-------------------------------------------")
+   console.log("|         Detalle Exito                   |")
+   console.log("-------------------------------------------")
+   exitos.forEach((exito) => console.log(`status : ${exito.status}  url : ${exito.url}`))
+ });
 }
 MdLink("./");
