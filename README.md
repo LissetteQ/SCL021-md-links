@@ -24,6 +24,7 @@ MDScan es una librería creada en NodeJs con la función de leer un archivo mark
 ## 4. Ejemplos de uso
 
 Una vez instalada la librería, puedes ejecutarla con el comando 'mdslinks' en tu terminal, con la ruta de la carpeta por ejemplo README.md o rutas.md (acepta rutas relativas), de la siguiente forma:
-![4f4d9376-d05c-4257-a7d2-8c48398ad4c0](https://user-images.githubusercontent.com/108200076/196059900-1ced435f-8a99-47b1-a6ce-a86d96c04a0e.jpg)
+
+![96451fdc-b2aa-456e-95a5-533924e42e69](https://user-images.githubusercontent.com/108200076/196443913-24b0fbf0-99ca-4a60-b303-6afcea3b5b43.jpg)
 
 
